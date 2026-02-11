@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Team Culture & Strategy Strategy</title>
+    <!-- Add Google Fonts for more immersive typography -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --primary: #4aa3df; /* Light blue for text/headings */
+            --primary-dark: #2c3e50; /* Original dark blue for backgrounds */
+            --accent-yellow: #f1c40f; 
+            --accent-green: #2ecc71;  
+            --accent-blue: #3498db;   
+            --accent-red: #e74c3c;    
+            --bg-body: #0f1115;      /* Deep distinctive dark */
+            --bg-card: rgba(30, 35, 45, 0.7); /* Glassmorphism base */
+            --bg-light: rgba(44, 44, 44, 0.4);
+            --text-main: #e0e0e0;
+            --text-muted: #a0a0a0;
+            --border-color: rgba(255, 255, 255, 0.1);
+            --glass-border: 1px solid rgba(255, 255, 255, 0.08);
+            --gradient-hero: linear-gradient(135deg, #0f171e 0%, #1a252f 100%);
+            --glow-color: rgba(74, 163, 223, 0.3);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Outfit', sans-serif;
+            line-height: 1.7;
+            color: var(--text-main);
+            background-color: var(--bg-body);
+            background-image: 
+                radial-gradient(circle at 10% 20%, rgba(74, 163, 223, 0.05) 0%, transparent 20%),
+                radial-gradient(circle at 90% 80%, rgba(241, 196, 15, 0.05) 0%, transparent 20%);
+            background-attachment: fixed;
+            overflow-x: hidden;
+        }
+
+        h1, h2, h3, .purpose-title {
+            font-family: 'Space Grotesk', sans-serif;
+        }
+
+        /* Animation utilities */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s cubic-bezier(0.5, 0, 0, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* Header / Hero Section */
+        header {
+            background: radial-gradient(circle at center, #1b2838 0%, #0f1115 100%);
+            color: white;
+            padding: 6rem 2rem;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: '';
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%234aa3df' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zM36 0V4h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+            opacity: 0.5;
+        }
+
+        header h1 {
+            font-size: 3.5rem;
+            margin-bottom: 2rem;
+            background: linear-gradient(to right, #fff, #90cbf9);
+            background-clip: text;
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+            text-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            position: relative;
+            animation: fadeInDown 1s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .purpose-box {
+            background: rgba(255, 255, 255, 0.03);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-left: 5px solid var(--accent-yellow);
+            border: 1px solid rgba(255,255,255,0.1);
+            border-left-width: 5px;
+            border-radius: 12px;
+            max-width: 800px;
+            margin: 0 auto;
+            text-align: left;
+            position: relative;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.3);
+            transform: perspective(1000px) rotateX(0deg);
+            transition: transform 0.3s ease;
+        }
+        
+        .purpose-box:hover {
+            transform: translateY(-5px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        .purpose-title {
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            font-size: 0.85rem;
+            color: var(--accent-yellow);
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .purpose-statement {
+            font-size: 1.25rem;
+            font-style: italic;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            padding: 2rem;
+        }
+
+        /* Section Styling */
+        section {
+            margin-bottom: 4rem;
+        }
+
+        h2 {
+            font-size: 2.5rem;
+            margin-bottom: 3rem;
+            padding-bottom: 0.5rem;
+            border-bottom: none;
+            position: relative;
+            display: inline-block;
+            color: white;
+        }
+        
+        h2::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 60px;
+            height: 4px;
+            background: var(--accent-blue);
+            border-radius: 2px;
+            transition: width 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+        }
+        
+        section:hover h2::after {
+            width: 100%;
+        }
+
+        /* Grid Layouts */
+        .grid-2 {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            .grid-2 {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        /* CVF Section */
+        .cvf-image {
+            width: 100%;
+            border-radius: 12px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.6);
+            border: var(--glass-border);
+            transition: transform 0.5s ease;
+        }
+        
+        .cvf-image:hover {
+            transform: scale(1.02);
+        }
+
+        .cvf-text {
+            background: var(--bg-card);
+            backdrop-filter: blur(10px);
+            padding: 2.5rem;
+            border-radius: 16px;
+            border: var(--glass-border);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+        }
+
+        .quadrant-tag {
+            display: inline-block;
+            background: var(--accent-yellow);
+            color: #333;
+            padding: 4px 8px;
+            border-radius: 4px;
+            font-weight: bold;
+            font-size: 0.8rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Mindset Cards */
+        .mindset-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            perspective: 1000px;
+        }
+
+        .card {
+            background: var(--bg-card);
+            backdrop-filter: blur(5px);
+            border: var(--glass-border);
+            border-radius: 16px;
+            padding: 2.5rem;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(180deg, rgba(255,255,255,0.05) 0%, transparent 100%);
+            pointer-events: none;
+        }
+
+        .card:hover {
+            transform: translateY(-10px) scale(1.02);
+            box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+            border-color: rgba(255,255,255,0.2);
+        }
+
+        .card h3 {
+            color: white;
+            margin-bottom: 1rem;
+            font-size: 1.5rem;
+        }
+        
+        .card p {
+            color: var(--text-muted);
+            flex-grow: 1;
+        }
+
+        /* Kotter List - Timeline Style */
+        .process-list {
+            list-style: none;
+            counter-reset: my-counter;
+            position: relative;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .process-list::before {
+            content: '';
+            position: absolute;
+            left: 24px;
+            top: 0;
+            bottom: 0;
+            width: 2px;
+            background: linear-gradient(180deg, var(--primary) 0%, transparent 100%);
+        }
+
+        .process-list li {
+            position: relative;
+            padding-left: 5rem;
+            margin-bottom: 3rem;
+            color: var(--text-muted);
+        }
+
+        .process-list li::before {
+            counter-increment: my-counter;
+            content: counter(my-counter);
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 50px;
+            height: 50px;
+            background: var(--bg-body);
+            color: var(--primary);
+            border: 2px solid var(--primary);
+            box-shadow: 0 0 15px var(--glow-color);
+            border-radius: 50%;
+            text-align: center;
+            line-height: 46px;
+            font-weight: bold;
+            font-size: 1.2rem;
+            z-index: 2;
+            transition: all 0.3s ease;
+        }
+        
+        .process-list li:hover::before {
+            background: var(--primary);
+            color: var(--bg-body);
+            transform: scale(1.1);
+            box-shadow: 0 0 25px var(--primary);
+        }
+
+        .process-list strong {
+            display: block;
+            font-size: 1.25rem;
+            color: white;
+            margin-bottom: 0.5rem;
+        }
+        
+        .process-list li span {
+            color: var(--text-muted);
+        }
+
+        /* Team Dynamics Box */
+        .dynamics-box {
+            background: linear-gradient(135deg, rgba(20, 20, 20, 0.95), rgba(30, 40, 50, 0.90));
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            color: #ffffff;
+            padding: 3rem;
+            border-radius: 20px;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        }
+        
+        .dynamics-intro {
+            font-size: 1.2rem;
+            margin-bottom: 2rem;
+            color: var(--accent-blue);
+            font-weight: 500;
+        }
+
+        .team-members {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            margin-bottom: 3rem;
+            flex-wrap: wrap;
+        }
+
+        .member-badge {
+            background: rgba(255, 255, 255, 0.1);
+            border: 1px solid var(--accent-blue);
+            padding: 0.5rem 1.5rem;
+            border-radius: 50px;
+            font-weight: 600;
+            color: var(--text-main);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+            transition: all 0.3s ease;
+        }
+
+        .member-badge:hover {
+            background: var(--accent-blue);
+            color: white;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(74, 163, 223, 0.4);
+        }
+
+        .dynamics-list li {
+            padding: 1.5rem;
+            background: rgba(255, 255, 255, 0.03); 
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            display: flex;
+            align-items: flex-start;
+            transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+            border-radius: 12px;
+            margin-bottom: 1rem;
+        }
+        
+        .dynamics-list li:hover {
+            background: rgba(74, 163, 223, 0.1);
+            transform: translateX(5px);
+            border-color: var(--accent-blue);
+        }
+
+        .dynamics-list strong {
+            color: var(--accent-yellow);
+            font-size: 1.1rem;
+            display: block;
+            margin-bottom: 0.3rem;
+        }
+
+        footer {
+            text-align: center;
+            padding: 2rem;
+            background: var(--bg-light);
+            color: var(--text-muted);
+            margin-top: 4rem;
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <h1>Strategic Transformation Dashboard</h1>
+            
+            <div class="purpose-box">
+                <div class="purpose-title">Team Purpose Statement</div>
+                <p class="purpose-statement">
+                    "We exist to empower our organization through extreme ownership and rapid innovation. By fostering a collaborative culture where every voice matters, we transform challenges into impactful outcomes and sustainable growth for those we serve."
+                </p>
+            </div>
+        </div>
+    </header>
+
+    <div class="container">
+
+        <section id="framework">
+            <h2>The Competing Values Framework</h2>
+            <div class="grid-2">
+                <div>
+                    <img src="abbie_CVF.png" alt="Competing Values Framework Chart" class="cvf-image">
+                    <p style="text-align: center; margin-top: 10px; font-size: 0.9rem; color: var(--text-muted);">Figure 1: Current vs. Future Cultural Profile</p>
+                </div>
+                <div class="cvf-text">
+                    <span class="quadrant-tag">FOCUS: COLLABORATE</span>
+                    <h3>Building a Cohesive Culture</h3>
+                    <p>Our strategic direction moves towards the "Collaborate" quadrant. This shift emphasizes long-term development and building a high-trust environment.</p>
+                    <br>
+                    <ul style="padding-left: 20px;">
+                        <li><strong>Focus:</strong> Teamwork, shared ownership, and consensus.</li>
+                        <li><strong>Goal:</strong> Increase interaction and rapport.</li>
+                        <li><strong>Style:</strong> People-oriented organization.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <section id="mindset">
+            <h2>Cultural Pillars</h2>
+            <div class="mindset-grid">
+                <div class="card" style="border-top: 4px solid var(--accent-red);">
+                    <h3>Extreme Ownership</h3>
+                    <p>When everyone owns outcomes—not just tasks—creativity and initiative naturally increase. We stop blaming and start solving.</p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--accent-green);">
+                    <h3>Speed Over Perfection</h3>
+                    <p>Innovation dies when people wait for perfect answers. We adopt a <strong>"ship fast, learn fast"</strong> mindset to stay ahead.</p>
+                </div>
+                <div class="card" style="border-top: 4px solid var(--accent-yellow);">
+                    <h3>Consensus & Consensus</h3>
+                    <p>While we move fast, we move together. We prioritize knowing the strengths and weaknesses of every teammate to harness collective power.</p>
+                </div>
+            </div>
+        </section>
+
+        <section id="roadmap">
+            <h2>Leading Change: The 8-Step Roadmap</h2>
+            <p style="margin-bottom: 2rem;">Adopting Kotter’s methodology to drive our transformation:</p>
+            <ol class="process-list">
+                <li>
+                    <strong>Create a Sense of Urgency</strong>
+                    Identify potential crises or major opportunities to spark motivation.
+                </li>
+                <li>
+                    <strong>Build a Guiding Coalition</strong>
+                    Form a strong leadership team with enough power to lead the change.
+                </li>
+                <li>
+                    <strong>Develop a Vision and Strategy</strong>
+                    Create a clear vision to direct the change effort and strategies to achieve it.
+                </li>
+                <li>
+                    <strong>Communicate the Vision</strong>
+                    Share the vision transparently across the organization to gain alignment.
+                </li>
+                <li>
+                    <strong>Empower Broad-Based Action</strong>
+                    Remove obstacles and enable employees to participate effectively in the change process.
+                </li>
+                <li>
+                    <strong>Generate Short-Term Wins</strong>
+                    Achieve and celebrate small achievements to build momentum.
+                </li>
+                <li>
+                    <strong>Consolidate Gains & Produce More Change</strong>
+                    Use early successes as a foundation to drive deeper, broader change initiatives.
+                </li>
+                <li>
+                    <strong>Anchor New Approaches in Culture</strong>
+                    Sustain the change by incorporating it into organizational values and culture.
+                </li>
+            </ol>
+        </section>
+
+        <section id="dynamics">
+            <h2>Team Dynamics Protocol</h2>
+            <div class="dynamics-box">
+                <p class="dynamics-intro">To succeed in the "Collaborate" quadrant, we commit to:</p>
+                
+                <ul class="dynamics-list">
+                    <li>
+                        <span><strong>1. Increase Interaction:</strong> Build rapport and trust with one another daily.</span>
+                    </li>
+                    <li>
+                        <span><strong>2. Know Your Team:</strong> Deeply understand the strengths and weaknesses of every team mate.</span>
+                    </li>
+                    <li>
+                        <span><strong>3. Harness Strengths:</strong> actively utilize the unique superpowers of each member.</span>
+                    </li>
+                    <li>
+                        <span><strong>4. Reinforce Weaknesses:</strong> Support each other; where one is weak, another is strong.</span>
+                    </li>
+                    <li>
+                        <span><strong>5. Shared Ownership:</strong> Win together, lose together. The team result is the only result.</span>
+                    </li>
+                </ul>
+
+                <div class="team-members">
+                    <div class="member-badge">Member 1</div>
+                    <div class="member-badge">Member 2</div>
+                    <div class="member-badge">Member 3</div>
+                    <div class="member-badge">Member 4</div>
+                </div>
+            </div>
+        </section>
+
+    </div>
+
+    <footer>
+        <p>&copy; 2024 Strategic Transformation Initiative</p>
+    </footer>
+
+    <script>
+        // Simple intersection observer for scroll animations
+        document.addEventListener('DOMContentLoaded', () => {
+            const observerOptions = {
+                threshold: 0.1,
+                rootMargin: "0px 0px -50px 0px"
+            };
+
+            const observer = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.classList.add('active');
+                    }
+                });
+            }, observerOptions);
+
+            const revealElements = document.querySelectorAll('.card, .cvf-text, .dynamics-box, section h2, .process-list li');
+            revealElements.forEach(el => {
+                el.classList.add('reveal');
+                observer.observe(el);
+            });
+        });
+    </script>
+</body>
+</html>
